@@ -15,7 +15,6 @@
 		B06813841BB9500C007067DA /* BlobListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06813831BB9500C007067DA /* BlobListViewCell.swift */; };
 		B06813861BB95363007067DA /* BlobListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06813851BB95363007067DA /* BlobListTableViewController.swift */; };
 		B068138A1BB98E56007067DA /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B06813891BB98E56007067DA /* libxml2.2.tbd */; };
-		B09559EA1CD15096008E0C7A /* AZSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09559E91CD15096008E0C7A /* AZSClient.framework */; };
 		B0A7D9BC1BB9B8AF003AC57D /* GetBlobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A7D9BB1BB9B8AF003AC57D /* GetBlobViewController.swift */; };
 		B4A4E952ED11327AFC27F519 /* Pods_BlobSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BC90698BE2EED703F026FF /* Pods_BlobSample.framework */; };
 /* End PBXBuildFile section */
@@ -34,7 +33,6 @@
 		B06813831BB9500C007067DA /* BlobListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobListViewCell.swift; sourceTree = "<group>"; };
 		B06813851BB95363007067DA /* BlobListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobListTableViewController.swift; sourceTree = "<group>"; };
 		B06813891BB98E56007067DA /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		B09559E91CD15096008E0C7A /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AZSClient.framework; path = ../../../../Desktop/AZSClient.framework; sourceTree = "<group>"; };
 		B0A7D9B81BB9A188003AC57D /* BlobSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlobSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		B0A7D9BB1BB9B8AF003AC57D /* GetBlobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlobViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,7 +43,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B068138A1BB98E56007067DA /* libxml2.2.tbd in Frameworks */,
-				B09559EA1CD15096008E0C7A /* AZSClient.framework in Frameworks */,
 				B4A4E952ED11327AFC27F519 /* Pods_BlobSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +61,6 @@
 		B06813521BB8C85E007067DA = {
 			isa = PBXGroup;
 			children = (
-				B09559E91CD15096008E0C7A /* AZSClient.framework */,
 				B06813891BB98E56007067DA /* libxml2.2.tbd */,
 				B068135D1BB8C85E007067DA /* BlobSample */,
 				B068135C1BB8C85E007067DA /* Products */,
@@ -142,7 +138,7 @@
 				TargetAttributes = {
 					B068135A1BB8C85E007067DA = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = UBF8T346G9;
+						DevelopmentTeam = JAWB2S5NHB;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -363,7 +359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = UBF8T346G9;
+				DEVELOPMENT_TEAM = JAWB2S5NHB;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AZSClient\"",
@@ -371,10 +367,10 @@
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = BlobSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.azure.storage.BlobSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.azure.storage.testblob;
 				PRODUCT_NAME = BlobSample;
 				REZ_SEARCH_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlobSample/BlobSample-Bridging-Header.h";
@@ -391,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = UBF8T346G9;
+				DEVELOPMENT_TEAM = JAWB2S5NHB;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AZSClient\"",
@@ -399,10 +395,10 @@
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = BlobSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.azure.storage.BlobSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.azure.storage.testblob;
 				PRODUCT_NAME = BlobSample;
 				REZ_SEARCH_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlobSample/BlobSample-Bridging-Header.h";

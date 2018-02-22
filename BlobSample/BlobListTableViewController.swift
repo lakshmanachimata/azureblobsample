@@ -25,11 +25,11 @@ class BlobListTableViewController: UITableViewController {
     
     // If using a SAS token, fill it in here.  If using Shared Key access, comment out the following line.
     var containerURL = "https://myaccount.blob.core.windows.net/mysampleioscontainer?sv=2015-02-21&st=2009-01-01&se=2100-01-01&sr=c&sp=rwdl&sig=mylongsig="
-    var usingSAS = true
+    var usingSAS = false
     
     // If using Shared Key access, fill in your credentials here and un-comment the "UsingSAS" line:
-    var connectionString = "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=myAccountKey=="
-    var containerName = "sampleioscontainer"
+    var connectionString = "DefaultEndpointsProtocol=https;AccountName=lvdrives;AccountKey=59Wpm1FYExVDq2jahZjbPt7k+VaAJA0lEYBQVV3ZNX6uk1qDrCrSMMlVI2YHTdlA73j6rewkkFCGTEtiK9XZwA=="
+    var containerName = "images"
     // var usingSAS = false
     
     // MARK: Properties
@@ -53,23 +53,24 @@ class BlobListTableViewController: UITableViewController {
                 let storageAccount : AZSCloudStorageAccount;
                 try! storageAccount = AZSCloudStorageAccount(fromConnectionString: connectionString)
                 let blobClient = storageAccount.getBlobClient()
+            
                 self.container = blobClient.containerReference(fromName: containerName)
             
-                let condition = NSCondition()
-                var containerCreated = false
-                
-                self.container.createContainerIfNotExists { (error : Error?, created) -> Void in
-                    condition.lock()
-                    containerCreated = true
-                    condition.signal()
-                    condition.unlock()
-                }
-                
-                condition.lock()
-                while (!containerCreated) {
-                    condition.wait()
-                }
-                condition.unlock()
+//                let condition = NSCondition()
+//                var containerCreated = false
+//
+//                self.container.createContainerIfNotExists { (error : Error?, created) -> Void in
+//                    condition.lock()
+//                    containerCreated = true
+//                    condition.signal()
+//                    condition.unlock()
+//                }
+//
+//                condition.lock()
+//                while (!containerCreated) {
+//                    condition.wait()
+//                }
+//                condition.unlock()
 //            } catch let error as NSError {
 //                print("Error in creating blob container object.  Error code = %ld, error domain = %@, error userinfo = %@", error.code, error.domain, error.userInfo);
 //            }
@@ -161,17 +162,19 @@ class BlobListTableViewController: UITableViewController {
     }
     
     func reloadBlobList() {
-        container.listBlobsSegmented(with: nil, prefix: nil, useFlatBlobListing: true, blobListingDetails: AZSBlobListingDetails(), maxResults: 50) { (error : Error?, results : AZSBlobResultSegment?) -> Void in
+        container.listBlobsSegmented(with: nil, prefix: nil, useFlatBlobListing: true, blobListingDetails: AZSBlobListingDetails(), maxResults: 200) { (error : Error?, results : AZSBlobResultSegment?) -> Void in
             
             self.blobs = [AZSCloudBlob]()
             
-            for blob in results!.blobs!
-            {
-                self.blobs.append(blob as! AZSCloudBlob)
+            if(results != nil){
+                for blob in results!.blobs!
+                {
+                    self.blobs.append(blob as! AZSCloudBlob)
+                }
+                
+                self.continuationToken = results!.continuationToken
+                self.tableView.performSelector(onMainThread: #selector(UICollectionView.reloadData), with: nil, waitUntilDone: false)
             }
-            
-            self.continuationToken = results!.continuationToken
-            self.tableView.performSelector(onMainThread: #selector(UICollectionView.reloadData), with: nil, waitUntilDone: false)
         }
     }
     

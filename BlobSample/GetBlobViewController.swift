@@ -20,12 +20,14 @@ import UIKit
 import AZSClient
 
 class GetBlobViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
-
+    @IBOutlet weak var testimage: UIImageView!
+    
     // MARK: Properties
     
     @IBOutlet weak var TempTextField: UITextField!
     @IBOutlet weak var textview: UITextView!
     var blob: AZSCloudBlob?
+    var imageUrl : URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +39,54 @@ class GetBlobViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             TempTextField.text = blob.blobName
             textview.text = "Blob text loading..."
             
-            blob.downloadToText(completionHandler: { (error : Error?, blobText : String?) -> Void in
-                self.performSelector(onMainThread: #selector(GetBlobViewController.setBlobText(_:)), with: blobText, waitUntilDone: false)
+            
+            let fileManager = FileManager.default
+            do {
+                let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+                 imageUrl = documentDirectory.appendingPathComponent("obsimage")
+                if( fileManager.fileExists(atPath: (imageUrl?.path)!)){
+                    
+                }else{
+                    fileManager.createFile(atPath: (imageUrl?.path)!, contents: Data.init(), attributes: nil)
+                }
+            } catch {
+                print(error)
+            }
+            
+            blob.downloadToFile(with: imageUrl!, append: true, completionHandler: {(error : Error?)-> Void in
+                self.perform(#selector(self.setBlobText))
+                var a = 1;
+                var b = 2;
+                var c = a + b;
             })
-        }
+
+//            blob.downloadToText(completionHandler: { (error : Error?, blobText : String?) -> Void in
+//                self.performSelector(onMainThread: #selector(GetBlobViewController.setBlobText(_:)), with: blobText, waitUntilDone: false)
+//            })
+//       }
 
         // Do any additional setup after loading the view.
+        }
     }
     
-    func setBlobText(_ blobText : String) {
-        self.textview.text = blobText
+    func setBlobText() {
+        
+        let imageUs = imageUrl?.absoluteString;
+    
+        let obsimage    = UIImage(contentsOfFile: (imageUrl?.path)!)
+        
+        self.testimage.image = obsimage;
+        do {
+            var a = 1;
+            var b = 2;
+            var c = a + b;
+        }
+        catch {
+            print("SOmething wrong")
+        }
+        var a = 1;
+        var b = 2;
+        var c = a + b;
     }
 
     // MARK: - Navigation

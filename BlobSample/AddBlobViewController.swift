@@ -48,7 +48,7 @@ class AddBlobViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        saveButton.isEnabled = false
+        saveButton.isEnabled = true
     }
     
     func checkValidBlobName() {
